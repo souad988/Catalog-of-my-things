@@ -35,7 +35,4 @@ class Item
   end
 
   private
-
-  attr_accessor :archived
-  attr_reader :id
 end
