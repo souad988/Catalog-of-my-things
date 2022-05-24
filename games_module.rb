@@ -14,3 +14,11 @@ module Game
         end
         data 
     end
+
+    def create_games
+        data = []
+        @games.each do |game|
+            data.push({ multiplayer: game.multiplayer, last_played_at: game.last_played_at, publish_date: game.publish_date })
+        end
+        open('./games.json', 'w') { |f| f << JSON.generate(data) }
+    end
