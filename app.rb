@@ -26,15 +26,26 @@ class App
   end
 
   def display_choice(option)
-    case option
-    when 1
-      puts 'option 1'
-    when 2
-      puts 'option 2'
-    when 3
-      puts 'option 3'
-    when 4
-      puts 'option 4'
+    methods = {}
+    # Placeholder functions need to be replaced
+    methods[1] = method(:list_all_books)
+    methods[2] = method(:list_all_people)
+    methods[3] = method(:add_new_person)
+    methods[4] = method(:add_new_book)
+    methods[5] = method(:add_new_rental)
+    methods[6] = method(:list_person_rentals)
+    methods[option].call
+  end
+
+  def run
+    flag = true
+    while flag
+      min_option = 1
+      max_option = 13
+      display_menu
+      option = input_number(min_option, max_option)
+      flag = false if option == max_option
+      display_choice(option) if option >= min_option && option <= max_option
     end
   end
 end
