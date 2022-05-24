@@ -35,8 +35,8 @@ class App
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
     puts "Game added successfully!"
-    end
-end
+  end
+
 
   def display_menu
     options = [
@@ -83,4 +83,4 @@ end
       display_choice(option) if option >= min_option && option <= max_option
     end
   end
-
+end
