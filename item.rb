@@ -2,10 +2,10 @@ require 'date'
 class Item
   attr_accessor :publish_date
 
-  def initialize(publish_date, archived, id = nil)
-    @id = id.nil? ? Random.rand(1..1000) : id
+  def initialize(publish_date)
+    @id = Random.rand(1..1000)
     @publish_date = Date.parse(publish_date)
-    @archived = archived
+    @archived = false
   end
 
   def add_source(source)
