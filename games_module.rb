@@ -1,7 +1,7 @@
 require 'json'
 require_relative './classes/game'
 
-module Game
+module GamesModule
     def load_games
         data = []
         file = './games.json'
@@ -22,3 +22,4 @@ module Game
         end
         open('./games.json', 'w') { |f| f << JSON.generate(data) }
     end
+end
