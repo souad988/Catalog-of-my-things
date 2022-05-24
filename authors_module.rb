@@ -14,3 +14,12 @@ module Author
         end
         data 
     end
+
+    def create_author
+        data = []
+        @authors.each do |author|
+            data.push({ first_name: author.first_name, last_name: author.last_name })
+        end
+        open('./authors.json', 'w') { |f| f << JSON.generate(data) }
+    end
+end
