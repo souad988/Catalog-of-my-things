@@ -63,7 +63,7 @@ class App
     # Placeholder functions need to be replaced
     methods[1] = method(:list_all_authors)
     methods[2] = method(:list_all_games)
-    methods[3] = method(:add_new_person)
+    methods[3] = method(:add_game)
     methods[4] = method(:add_new_book)
     methods[5] = method(:add_new_rental)
     methods[6] = method(:list_person_rentals)
