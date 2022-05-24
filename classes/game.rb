@@ -14,3 +14,4 @@ class Game < Item
         duration = Time.now.year - @last_played_at.year
         super && duration > 2
     end
+end
