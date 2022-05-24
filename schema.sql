@@ -12,3 +12,11 @@ CREATE TABLE item (
     FOREIGN KEY (genre_id) REFERENCES genre(id),
     FOREIGN KEY (author_id) REFERENCES author(id),
 )
+
+
+CREATE TABLE games (
+    id INT  
+    multiplayer BOOLEAN 
+    last_played_at DATE,
+    FOREIGN KEY (id) REFERENCES item(id)
+)
