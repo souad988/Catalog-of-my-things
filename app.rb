@@ -83,4 +83,4 @@ end
       display_choice(option) if option >= min_option && option <= max_option
     end
   end
-end
+
