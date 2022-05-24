@@ -8,3 +8,9 @@ class Author
         @items = []
         id = Random.rand(1..100)
     end
+
+    def add_item(item)
+        @items.push(item)
+        item.add_author(self)
+    end
+end
