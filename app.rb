@@ -5,7 +5,6 @@ require_relative './authors_module'
 require_relative './classes/game'
 require_relative './classes/author'
 
-
 class App
   include Inputs
   include GamesModule
@@ -21,22 +20,21 @@ class App
       puts "#{author.first_name} #{author.last_name}"
     end
   end
-  
+
   def list_all_games
     @games.each do |game|
       puts "#{game.name} #{game.publish_date}"
     end
   end
 
-  def add_game 
-    multiplayer = input_bool()
-    last_played_at = input_string()
-    publish_date = input_string()
+  def add_game
+    multiplayer = input_bool
+    last_played_at = input_string
+    publish_date = input_string
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
-    puts "Game added successfully!"
+    puts 'Game added successfully!'
   end
-
 
   def display_menu
     options = [
@@ -63,7 +61,7 @@ class App
   def display_choice(option)
     methods = {}
     # Placeholder functions need to be replaced
-    methods[1] = method(:list_all_)
+    methods[1] = method(:list_all_authors)
     methods[2] = method(:list_all_games)
     methods[3] = method(:add_new_person)
     methods[4] = method(:add_new_book)
