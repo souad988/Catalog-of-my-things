@@ -1,7 +1,13 @@
 require_relative './inputs'
+require_relative './book_methods'
+require_relative './label_methods'
 
 class App
   include Inputs
+  def initialize
+    @books = read_data('books.json')
+    @labels = read_data('labels.json')
+  end
 
   def display_menu
     options = [
@@ -29,11 +35,8 @@ class App
     methods = {}
     # Placeholder functions need to be replaced
     methods[1] = method(:list_all_books)
-    methods[2] = method(:list_all_people)
-    methods[3] = method(:add_new_person)
-    methods[4] = method(:add_new_book)
-    methods[5] = method(:add_new_rental)
-    methods[6] = method(:list_person_rentals)
+    methods[6] = method(:list_all_labels)
+    methods[9] = method(:add_book)
     methods[option].call
   end
 
@@ -44,8 +47,8 @@ class App
       max_option = 13
       display_menu
       option = input_number(min_option, max_option)
+      display_choice(option) if option >= min_option && option < max_option
       flag = false if option == max_option
-      display_choice(option) if option >= min_option && option <= max_option
     end
   end
 end

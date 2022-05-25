@@ -1,5 +1,5 @@
 class Label
-  def initialize(title, color)
+  def initialize(title, color, id = nil)
     @id = Random.rand(1..2000)
     @items = []
     @title = title
@@ -14,7 +14,7 @@ class Label
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'a' => [title, color]
+      'a' => [title, color, id]
     }.to_json(*args)
   end
 
