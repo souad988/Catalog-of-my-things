@@ -14,14 +14,14 @@ class MusicAlbumController
     end
   end
 
-  def add(publish_date, on_spotify , genre)
-    music_album = MusicAlbum.new(publish_date, on_spotify.downcase == 'y' ? true : false)
+  def add(publish_date, on_spotify, genre)
+    music_album = MusicAlbum.new(publish_date, on_spotify.downcase == 'y')
     music_album.add_genre(genre)
     @music_albums.push(music_album)
   end
 
   def save
     serialized_data = @music_albums.map(&:to_json)
-    Query.write('music_album',JSON.generate(serialized_data))
+    Query.write('music_album', JSON.generate(serialized_data))
   end
 end

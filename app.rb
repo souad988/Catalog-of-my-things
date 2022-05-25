@@ -41,11 +41,12 @@ class App
     @games.push(game)
     puts 'Game added successfully!'
   end
-########## MUSIC ALBUM FEATURE ###########################
+
+  ########## MUSIC ALBUM FEATURE ###########################
   def add_music_album
-     data = Utils.data(['publish_date','on_spotify [Y/N]'])
-     genre = @genre_controller.genres[Utils.list_data(@genre_controller) - 1]
-     @music_controller.add(data['publish_date'],data['on_spotify [Y/N]'], genre)
+    data = Utils.data(['publish_date', 'on_spotify [Y/N]'])
+    genre = @genre_controller.genres[Utils.list_data(@genre_controller) - 1]
+    @music_controller.add(data['publish_date'], data['on_spotify [Y/N]'], genre)
   end
 
   def list_music_albums

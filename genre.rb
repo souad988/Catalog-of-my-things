@@ -1,6 +1,7 @@
 class Genre
   attr_accessor :name
   attr_reader :id
+
   def initialize(name, id = nil)
     @id = id.nil? ? Random.rand(1..1000) : id
     @name = name
