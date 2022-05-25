@@ -16,21 +16,28 @@ class App
   end
 
   def list_all_authors
+    puts 'Authors:'
     @authors.each do |author|
-      puts "#{author.first_name} #{author.last_name}"
+      puts "First Name: #{author.first_name} "
+      puts "Last Name: #{author.last_name} "
     end
   end
 
   def list_all_games
-    @games.each do |game|
-      puts "#{game.name} #{game.publish_date}"
+    puts 'Games:'
+    @games.each do |games|
+      puts "Multiplayer: #{games.multiplayer}, Publish Date: #{games.publish_date},
+      Last played date: #{games.last_played_at}"
     end
   end
 
   def add_game
-    multiplayer = input_bool
-    last_played_at = input_string
-    publish_date = input_string
+    puts 'Please write multiplayer: '
+    multiplayer = input_bool()
+    puts 'Please write last played date [Enter date in format (yyyy-mm-dd)]'
+    last_played_at = input_string()
+    puts 'Please write date of publish [Enter date in format (yyyy-mm-dd)]'
+    publish_date = input_string()
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
     puts 'Game added successfully!'
@@ -38,17 +45,17 @@ class App
 
   def display_menu
     options = [
-      'List all books',
-      'List all music albums',
-      'List all movies',
-      'List of games',
-      'List all genres',
-      'List all labels',
-      'List all authors',
-      'List all sources',
-      'Add a book',
-      'Add a music album',
-      'Add a movie',
+      # 'List all books',
+      # 'List all music albums',
+      # 'List all movies',
+      'List of authors',
+      # 'List all genres',
+      # 'List all labels',
+      'List all games',
+      # 'List all sources',
+      # 'Add a book',
+      # 'Add a music album',
+      # 'Add a movie',
       'Add a game',
       'Exit'
     ]
@@ -64,9 +71,9 @@ class App
     methods[1] = method(:list_all_authors)
     methods[2] = method(:list_all_games)
     methods[3] = method(:add_game)
-    methods[4] = method(:add_new_book)
-    methods[5] = method(:add_new_rental)
-    methods[6] = method(:list_person_rentals)
+    # methods[4] = method(:add_new_book)
+    # methods[5] = method(:add_new_rental)
+    # methods[6] = method(:list_person_rentals)
     methods[option].call
   end
 
