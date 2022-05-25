@@ -1,7 +1,8 @@
 require './item'
 class MusicAlbum < Item
-  def initialize(publish_date, on_spotify, id = nil)
-    super(publish_date, id)
+  attr_accessor :on_spotify
+  def initialize(publish_date, on_spotify, id = nil, source = nil, label = nil, author = nil, genre = nil, archived: false)
+    super(publish_date, id = nil, source = nil, label = nil, author = nil, genre = nil, archived: false)
     @on_spotify = on_spotify
   end
 
@@ -11,11 +12,11 @@ class MusicAlbum < Item
   
   def self.from_json(json)
     json = JSON.parse(json) if json.is_a? String
-    MusicAlbum.new(json['publish_date'], json['on_spotify'], json['id'])
+    MusicAlbum.new(json['publish_date'], json['on_spotify'], json['id'], json['source'], json['label'], json['author'], json['genre'], archived: json['archived'])
   end
 
   def to_json(*_args)
-    JSON.generate({ id: @id, publish_date: @publish_date, on_spotify: @on_spotify })
+    JSON.generate({ id: @id, publish_date: @publish_date, on_spotify: @on_spotify, source: @source, label: @label, genre: @genre, archived: @archived })
   end
   
 end
