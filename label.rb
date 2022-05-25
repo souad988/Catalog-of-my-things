@@ -21,4 +21,7 @@ class Label
   def self.json_create(object)
     new(*object['a'])
   end
+
+  attr_reader :items, :id
+  attr_accessor :title, :color
 end

@@ -6,7 +6,7 @@ describe Label do
     label = Label.new('title', 'color')
     item = Item.new()
     label.add_item(item)
-    it 'the method factorial should return the factorial of given integer 5 to be 120' do
+    it 'label instance should return attributes it was created with' do
       expect(label.title).to eq 'title'
       expect(label.color).to eq 'color'
       expect(label.items[0]) to eq item

@@ -1,3 +1,5 @@
+require_relative 'item'
+
 class Book < Item
   def initialize(publish_date, archived, publisher, cover_state)
     super(publish_date, archived)
@@ -6,8 +8,7 @@ class Book < Item
   end
 
   def can_be_archived?
-    return if @cover_state == 'bad'
-
+    return true if @cover_state == 'bad'
     super.can_be_archived?
   end
 
@@ -21,4 +22,6 @@ class Book < Item
   def self.json_create(object)
     new(*object['a'])
   end
+
+  attr_accessor :publisher, :cover_state
 end
