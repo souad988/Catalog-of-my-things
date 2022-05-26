@@ -3,7 +3,8 @@ class Item
   attr_accessor :publish_date
   attr_reader :source, :label, :author, :genre
 
-  def initialize(publish_date, id = nil, source = nil, label = nil, author = nil, genre = nil, archived: false)
+  # rubocop:disable Metrics/ParameterLists
+  def initialize(publish_date, id = nil, label = nil, author = nil, genre = nil, archived: false)
     @id = id.nil? ? Random.rand(1..1000) : id
     @publish_date = Date.parse(publish_date)
     @archived = archived
@@ -13,6 +14,7 @@ class Item
     @genre = genre
   end
 
+  # rubocop:enable Metrics/ParameterLists
   def add_source(source)
     @source = source
   end
