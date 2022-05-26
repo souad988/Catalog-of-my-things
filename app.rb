@@ -90,11 +90,10 @@ class App
     # book.add_author(author)
     book.add_label(label)
     # book.add_genre(genre)
-    @label << label
+    @labels << label
     @books << book
     store_data('books.json', @books)
     store_data('labels.json', @labels)
-
   end
 
   def display_menu

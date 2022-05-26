@@ -5,7 +5,7 @@ class Book < Item
     super(id, 'name', publish_date)
     @publisher = publisher
     @cover_state = cover_state
-    label.add(self)
+    label.add_item(self) if label != nil
   end
 
   def can_be_archived?
