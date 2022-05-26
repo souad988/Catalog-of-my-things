@@ -48,7 +48,7 @@ class App
     data = Utils.data(['publish_date', 'on_spotify [Y/N]'])
     genre = @genre_controller.genres[Utils.list_data(@genre_controller) - 1]
     @music_controller.add(data['publish_date'], data['on_spotify [Y/N]'], genre)
-    puts "music album created succesfully!"
+    puts 'music album created succesfully!'
   end
 
   def list_music_albums
@@ -137,7 +137,7 @@ class App
       max_option = 10
       display_menu
       option = input_number(min_option, max_option)
-      display_choice(option)   if (option >= min_option && option <= max_option)   
+      display_choice(option) if option >= min_option && option <= max_option
       flag = false if option == max_option
     end
   end

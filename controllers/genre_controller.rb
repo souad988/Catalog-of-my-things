@@ -1,4 +1,3 @@
-
 class GenreController
   attr_reader :genres
 

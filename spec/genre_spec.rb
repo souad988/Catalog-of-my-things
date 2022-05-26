@@ -1,11 +1,11 @@
-require_relative '../genre'
+require_relative '../classes/genre'
 require 'date'
 require 'json'
 
 describe Genre do
   before :each do
     @genre = Genre.new 'Art', 972
-    @json = "{\"id\":972,\"name\":\"Art\"}"
+    @json = '{"id":972,"name":"Art"}'
   end
 
   it 'should be a Genre instance ' do
