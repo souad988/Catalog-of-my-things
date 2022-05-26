@@ -2,7 +2,7 @@ require_relative '../classes/game'
 
 describe Game do
   before :each do
-    @game = Game.new 'multiplayer', '2005-01-01', '2002-01-01'
+    @game = Game.new 'multiplayer', '2010-02-01', '2005-01-01'
   end
 
   it 'game should be an instance of game class' do
@@ -14,6 +14,6 @@ describe Game do
   end
 
   it 'last played date is 2010-02-01' do
-    expect @last_played_at == '2002-02-01'
+    expect @last_played_at == '2010-02-01'
   end
 end
