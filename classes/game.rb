@@ -6,6 +6,7 @@ class Game < Item
 
   def initialize(publish_date, multiplayer, last_played_at, id = nil)
     super(publish_date, id)
+
     @multiplayer = multiplayer
     @last_played_at = Date.parse(last_played_at)
   end
