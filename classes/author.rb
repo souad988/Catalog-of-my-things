@@ -11,4 +11,16 @@ class Author
     @items.push(item)
     item.add_author(self)
   end
+
+  def self.from_json(json)
+    json = Json.parse(json) if json.is_a? String
+    Author.new(json['first_name'], json['last_name'])
+  end
+
+  def to_json(*_args)
+    JSON.generate({
+      first_name: @first_name,
+      last_name: @last_name
+    })
+  end
 end
