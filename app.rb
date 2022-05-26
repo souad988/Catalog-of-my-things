@@ -132,18 +132,18 @@ class App
   def display_choice(option)
     methods = {}
     # Placeholder functions need to be replaced
-    methods[1] = method(:list_all_authors)
-    methods[2] = method(:list_all_games)
-    methods[3] = method(:add_game)
-    # methods[4] = method(:add_new_book)
-    # methods[5] = method(:add_new_rental)
-    # methods[6] = method(:list_person_rentals)
     methods[1] = method(:list_all_books)
-    methods[6] = method(:list_all_labels)
-    methods[9] = method(:add_book)
-    methods[5] = method(:list_genres)
     methods[2] = method(:list_music_albums)
+    # methods[3] = method(:list_all_movies)
+    methods[4] = method(:list_all_games)
+    methods[5] = method(:list_genres)
+    methods[6] = method(:list_all_authors)
+    methods[7] = method(:list_all_labels)
+    # methods[8] = method(:list_all_sources)
+    methods[9] = method(:add_book)
     methods[10] = method(:add_music_album)
+    # methods[11] = method(:add_movie)
+    methods[12] = method(:add_game)
     methods[13] = method(:exit_app)
     methods[option].call
   end

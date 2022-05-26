@@ -2,7 +2,7 @@ require_relative '../item'
 
 class Book < Item
   def initialize(publish_date, publisher, cover_state, _label, id = nil)
-    super(id, 'name', publish_date)
+    super(publish_date, id)
     @publisher = publisher
     @cover_state = cover_state
     label&.add_item(self)
@@ -17,7 +17,7 @@ class Book < Item
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
-      'a' => [@publish_date, @archived, @publisher, @cover_state, @id, @author, @genre, @label]
+      'a' => [@publish_date, @publisher, @cover_state, @label, @id]
     }.to_json(*args)
   end
 
