@@ -1,5 +1,4 @@
 require 'json'
-
 module Query
   def self.create_path(file_name)
     File.expand_path([file_name, '.json'].join, './storage/')
