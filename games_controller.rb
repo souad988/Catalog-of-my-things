@@ -19,10 +19,9 @@ class GamesController
   end
 
   def add(multiplayer, publish_date, last_played_at, author)
-    game = Game.new(multiplayer, publish_date, last_played_at)
+    game = Game.new(publish_date, multiplayer,last_played_at)
     game.add_author(author)
     @games.push(game)
-    puts 'Game added successfully!'
   end
 
   def save
