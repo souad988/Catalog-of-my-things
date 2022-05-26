@@ -16,17 +16,17 @@ class App
   end
 
   def list_all_authors
-   @author_controller.list
+    @author_controller.list
   end
 
   def list_all_games
-   @game_controller.list
+    @game_controller.list
   end
 
   def add_game
-    data = Utils.data(%w[multiplayer publish_date last_played_at])
+    data = Utils.data(['multiplayer [Y/N]', 'publish_date', 'last_played_at'])
     author = @author_controller.authors[Utils.list_data(@author_controller) - 1]
-    @game_controller.add_game(data, author)
+    @game_controller.add(data['multiplayer'], data['publish_date'], data['last_played_at'], author)
     puts 'Game added successfully!'
   end
 

@@ -1,30 +1,32 @@
 require_relative 'query'
 
 class GamesController
-  def initialize() 
+  def initialize()
     @games = Query.read('game').map { |json| Game.from_json(json) }
   end
 
-  def list 
-    if @games.length.zero? 
+  def list
+    if @games.length.zero?
       puts ' Game list is empty! choose the option to add a game from the list'
     else
-      @games.each do |game, index|
-        puts "Game #{index + 1} id: - #{game.multiplayer} #{game.publish_date} #{game.last_played_at}"
+      @games.each_with_index do |game, index|
+        puts "Game #{index + 1} Multiplayer: #{game.multiplayer}
+        Publish Date: #{game.publish_date}
+        Last Played: #{game.last_played_at}"
       end
       puts ''
     end
   end
 
-  def add(multiplayer, publish_date, last_played_at)
+  def add(multiplayer, publish_date, last_played_at, author)
     game = Game.new(multiplayer, publish_date, last_played_at)
     game.add_author(author)
     @games.push(game)
     puts 'Game added successfully!'
   end
 
-  def save 
+  def save
     serialized_games = @games.map(&:to_json)
-    Query.write('game', serialized_games)
+    Query.write('game', JSON.generate(serialized_games))
   end
 end

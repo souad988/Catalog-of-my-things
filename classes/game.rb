@@ -22,9 +22,9 @@ class Game < Item
 
   def to_json(*_args)
     JSON.generate({
-      multiplayer => @multiplayer,
-      last_played_at => @last_played_at,
-      publish_date => @publish_date
-    })
+                    multiplayer => @multiplayer,
+                    last_played_at => @last_played_at,
+                    publish_date => @publish_date
+                  })
   end
 end
