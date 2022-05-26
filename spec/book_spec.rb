@@ -1,6 +1,5 @@
 require_relative '../classes/book'
-
-require './label'
+require_relative '../classes/item'
 
 describe Book do
   context 'When testing the Book class' do

@@ -4,7 +4,7 @@ require 'json'
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(publish_date, on_spotify, _id = nil, _genre = nil, archived: false)
+  def initialize(publish_date, on_spotify, id = nil, genre = nil, archived: false)
     super(publish_date, id, genre, archived: archived)
     @on_spotify = on_spotify
   end

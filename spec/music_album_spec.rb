@@ -5,7 +5,7 @@ require 'date'
 describe MusicAlbum do
   before :each do
     @music_album = MusicAlbum.new '2021-05-20', 'true', 972
-    @json = '{"id":972,"publish_date":"2021-05-20","on_spotify":true,"genre":null,"archived":false}'
+    @json = "{\"id\":972,\"publish_date\":\"2021-05-20\",\"on_spotify\":\"true\",\"genre\":null,\"archived\":false}"
   end
 
   it 'should be a MusicAlbum instance ' do
