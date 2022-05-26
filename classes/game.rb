@@ -14,4 +14,17 @@ class Game < Item
     duration = Time.now.year - @last_played_at.year
     super && duration > 2
   end
+
+  def self.from_json(json)
+    json = Json.parse(json) if json.is_a? String
+    Game.new(json['multiplayer'], json['last_played_at'], json['publish_date'])
+  end
+
+  def to_json(*_args)
+    JSON.generate({
+      multiplayer => @multiplayer,
+      last_played_at => @last_played_at,
+      publish_date => @publish_date
+    })
+  end
 end
