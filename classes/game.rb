@@ -4,8 +4,8 @@ require_relative '../item'
 class Game < Item
   attr_accessor :multiplayer, :last_played_at, :publish_date
 
-  def initialize(multiplayer, last_played_at, publish_date)
-    super(id, publish_date)
+  def initialize(publish_date, multiplayer, last_played_at, id = nil)
+    super(publish_date, id)
     @multiplayer = multiplayer
     @last_played_at = Date.parse(last_played_at)
   end
@@ -16,15 +16,15 @@ class Game < Item
   end
 
   def self.from_json(json)
-    json = Json.parse(json) if json.is_a? String
-    Game.new(json['multiplayer'], json['last_played_at'], json['publish_date'])
+    json = JSON.parse(json) if json.is_a? String
+    Game.new(json['publish_date'], json['multiplayer'], json['last_played_at'], json['id'] )
   end
 
   def to_json(*_args)
-    JSON.generate({
-                    multiplayer => @multiplayer,
-                    last_played_at => @last_played_at,
-                    publish_date => @publish_date
+    JSON.generate({ id: @id,
+                    multiplayer: @multiplayer,
+                    last_played_at: @last_played_at,
+                    publish_date: @publish_date
                   })
   end
 end

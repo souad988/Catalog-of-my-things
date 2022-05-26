@@ -36,6 +36,7 @@ class App
 
   def add_game
     data = Utils.data(['multiplayer [Y/N]', 'publish_date', 'last_played_at'])
+    p " add game data  #{data['publish_date']}"
     author = @author_controller.authors[Utils.list_data(@author_controller) - 1]
     @game_controller.add(data['multiplayer'], data['publish_date'], data['last_played_at'], author)
     puts 'Game added successfully!'
