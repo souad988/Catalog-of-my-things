@@ -52,6 +52,12 @@ class App
     options.each_with_index { |choice, index| puts "#{index + 1} - #{choice}" }
   end
 
+  def exit_app
+    @music_controller.save
+    @game_controller.save
+    exit(true)
+  end
+
   def display_choice(option)
     methods = {}
     # Placeholder functions need to be replaced
@@ -61,6 +67,7 @@ class App
     # methods[4] = method(:add_new_book)
     # methods[5] = method(:add_new_rental)
     # methods[6] = method(:list_person_rentals)
+    methods[13] = method(:exit_app)
     methods[option].call
   end
 
