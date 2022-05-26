@@ -15,7 +15,7 @@ describe Book do
     it 'check attribute cover state' do
       expect(book.cover_state).to eq 'bad'
     end
-    
+
     it 'check can_be_archived method to return true' do
       expect(book2.can_be_archived?).to be_falsey
     end
