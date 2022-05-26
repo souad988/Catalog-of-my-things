@@ -17,14 +17,13 @@ class Game < Item
 
   def self.from_json(json)
     json = JSON.parse(json) if json.is_a? String
-    Game.new(json['publish_date'], json['multiplayer'], json['last_played_at'], json['id'] )
+    Game.new(json['publish_date'], json['multiplayer'], json['last_played_at'], json['id'])
   end
 
   def to_json(*_args)
     JSON.generate({ id: @id,
                     multiplayer: @multiplayer,
                     last_played_at: @last_played_at,
-                    publish_date: @publish_date
-                  })
+                    publish_date: @publish_date })
   end
 end
