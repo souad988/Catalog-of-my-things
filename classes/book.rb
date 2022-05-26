@@ -1,11 +1,11 @@
 require_relative '../item'
 
 class Book < Item
-  def initialize(publish_date, _archived, publisher, cover_state, _author, _genre, _label, id = nil)
+  def initialize(publish_date, publisher, cover_state, _label, id = nil)
     super(id, 'name', publish_date)
     @publisher = publisher
     @cover_state = cover_state
-    label.add_item(self) if label != nil
+    label&.add_item(self)
   end
 
   def can_be_archived?

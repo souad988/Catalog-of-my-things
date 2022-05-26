@@ -60,13 +60,13 @@ class App
   def add_book
     puts 'Enter Publish date'
     publish_date = input_string
-    puts 'Enter If Archived ? [Y/N]'
-    archived = input_bool
+    # puts 'Enter If Archived ? [Y/N]'
+    # archived = input_bool
     puts 'Enter Publisher'
     publisher = input_string
     puts 'Enter state of cover [bad/good]'
     cover_state = input_string
-    book = Book.new(publish_date, archived, publisher, cover_state, nil, nil, nil)
+    book = Book.new(publish_date, publisher, cover_state, nil, nil, nil)
 
     # # select author / add author
     # puts "Enter Author's First name"
