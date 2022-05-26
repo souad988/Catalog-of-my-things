@@ -1,13 +1,14 @@
 require_relative './inputs'
-require_relative './item'
-require_relative './games_controller'
-require_relative './authors_controller'
+require_relative './classes/item'
+require_relative './classes/genre'
+require_relative './controllers/games_controller'
+require_relative './controllers/authors_controller'
 require_relative './classes/game'
 require_relative './classes/author'
 require_relative './controllers/music_album_controller'
 require_relative './utils'
 require_relative 'query'
-require_relative 'music_album'
+require_relative 'classes/music_album'
 require_relative './controllers/genre_controller'
 require_relative './classes/book'
 require_relative './classes/label'
@@ -47,6 +48,7 @@ class App
     data = Utils.data(['publish_date', 'on_spotify [Y/N]'])
     genre = @genre_controller.genres[Utils.list_data(@genre_controller) - 1]
     @music_controller.add(data['publish_date'], data['on_spotify [Y/N]'], genre)
+    puts 'music album created succesfully!'
   end
 
   def list_music_albums
@@ -92,15 +94,12 @@ class App
     options = [
       'List all books',
       'List all music albums',
-      'List all movies',
       'List of games',
       'List all genres',
       'List all authors',
       'List all labels',
-      'List all sources',
       'Add a book',
       'Add a music album',
-      'Add a movie',
       'Add a game',
       'Exit'
     ]
@@ -118,20 +117,16 @@ class App
 
   def display_choice(option)
     methods = {}
-    # Placeholder functions need to be replaced
     methods[1] = method(:list_all_books)
     methods[2] = method(:list_music_albums)
-    # methods[3] = method(:list_all_movies)
-    methods[4] = method(:list_all_games)
-    methods[5] = method(:list_genres)
-    methods[6] = method(:list_all_authors)
-    methods[7] = method(:list_all_labels)
-    # methods[8] = method(:list_all_sources)
-    methods[9] = method(:add_book)
-    methods[10] = method(:add_music_album)
-    # methods[11] = method(:add_movie)
-    methods[12] = method(:add_game)
-    methods[13] = method(:exit_app)
+    methods[3] = method(:list_all_games)
+    methods[4] = method(:list_genres)
+    methods[5] = method(:list_all_authors)
+    methods[6] = method(:list_all_labels)
+    methods[7] = method(:add_book)
+    methods[8] = method(:add_music_album)
+    methods[9] = method(:add_game)
+    methods[10] = method(:exit_app)
     methods[option].call
   end
 
@@ -139,7 +134,7 @@ class App
     flag = true
     while flag
       min_option = 1
-      max_option = 13
+      max_option = 10
       display_menu
       option = input_number(min_option, max_option)
       display_choice(option) if option >= min_option && option <= max_option

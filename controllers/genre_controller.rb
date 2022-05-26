@@ -1,4 +1,3 @@
-require_relative '../genre'
 class GenreController
   attr_reader :genres
 
@@ -11,7 +10,7 @@ class GenreController
       puts ' Genre list is empty! choose the option to add a genre from the list'
     else
       @genres.each_with_index do |genre, index|
-        puts "- Genre#{index + 1} id: #{genre.id} name: #{genre.name}"
+        puts "- index #{index + 1} id: #{genre.id} name: #{genre.name}"
       end
     end
     @genres.length

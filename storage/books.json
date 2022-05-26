@@ -1,1 +1,1 @@
-[{"json_class":"Book","a":["2000-02-02","aa","bad",{"json_class":"Label","a":["ll","aa",445]},879]}]
+[{"json_class":"Book","a":["2000-02-02","aa","bad",null,879]},{"json_class":"Book","a":["2011-04-02","ALL","bad",null,706]},{"json_class":"Book","a":["2021-02-02","LAN","good",null,292]},{"json_class":"Book","a":["2020-02-20","AA","bad",{"json_class":"Label","a":["AA","yellow",368]},298]}]
