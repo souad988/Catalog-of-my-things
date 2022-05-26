@@ -54,6 +54,7 @@ class App
     data = Utils.data(['publish_date', 'on_spotify [Y/N]'])
     genre = @genre_controller.genres[Utils.list_data(@genre_controller) - 1]
     @music_controller.add(data['publish_date'], data['on_spotify [Y/N]'], genre)
+    puts "New music album added successfully!"
   end
 
   def list_music_albums
@@ -63,7 +64,7 @@ class App
   def list_genres
     @genre_controller.list
   end
-
+########## MUSIC ALBUM FEATURE ###########################
   def display_menu
     options = [
       'List all books',
@@ -80,7 +81,6 @@ class App
       'Add a game',
       'Exit'
     ]
-
     puts 'Please choose an option by entering a valid number: '
     puts ' '
     options.each_with_index { |choice, index| puts "#{index + 1} - #{choice}" }
