@@ -69,6 +69,8 @@ class App
 
   def list_genres
     @genre_controller.list
+  end
+
   def list_all_labels
     @labels.each { |label| puts "Title: #{label.title}, Color: #{label.color}" }
   end
@@ -107,12 +109,8 @@ class App
       'List all movies',
       'List of games',
       'List all genres',
-      'List all labels',
       'List all authors',
-      'List of authors',
-      'List all genres',
       'List all labels',
-      'List all games',
       'List all sources',
       'Add a book',
       'Add a music album',
@@ -157,7 +155,6 @@ class App
       max_option = 13
       display_menu
       option = input_number(min_option, max_option)
-      flag = false if option == max_option
       display_choice(option) if option >= min_option && option <= max_option
       flag = false if option == max_option
     end
