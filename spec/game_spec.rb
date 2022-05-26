@@ -1,4 +1,5 @@
 require_relative '../classes/game'
+require_relative '../classes/item'
 
 describe Game do
   before :each do
