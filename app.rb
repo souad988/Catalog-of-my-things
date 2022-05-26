@@ -39,11 +39,11 @@ class App
 
   def add_game
     puts 'Please write multiplayer: '
-    multiplayer = input_bool()
+    multiplayer = input_bool
     puts 'Please write last played date [Enter date in format (yyyy-mm-dd)]'
-    last_played_at = input_string()
+    last_played_at = input_string
     puts 'Please write date of publish [Enter date in format (yyyy-mm-dd)]'
-    publish_date = input_string()
+    publish_date = input_string
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
     puts 'Game added successfully!'
