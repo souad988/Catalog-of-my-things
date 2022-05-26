@@ -6,6 +6,9 @@ This app was developed with ruby and allows users to:
 - You can add books or music albums, and you can create a label or genre for the said item.
 - The application preserves user data by using JSON files while exiting the application. 
 
+## Demo video  
+https://drive.google.com/file/d/19-3qmTmZ9LUhy1OkaYP8kp8I0j48b0uc/view?usp=sharing
+
 ## Built With
 
 - Ruby
