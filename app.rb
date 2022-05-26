@@ -1,7 +1,7 @@
 require_relative './inputs'
 require_relative './item'
-require_relative './games_module'
-require_relative './authors_module'
+require_relative './games_controller'
+require_relative './authors_controller'
 require_relative './classes/game'
 require_relative './classes/author'
 require_relative './controllers/music_album_controller'
@@ -15,13 +15,11 @@ require_relative './other_methods'
 
 class App
   include Inputs
-  include GamesModule
-  include AuthorsModule
   include OtherMethods
 
   def initialize
-    @games = load_games
-    @authors = load_authors
+    @game_controller = GamesController.new
+    @author_controller = AuthorController.new
     @music_controller = MusicAlbumController.new
     @genre_controller = GenreController.new
     @books = read_data('books.json')
@@ -29,30 +27,18 @@ class App
   end
 
   def list_all_authors
-    puts 'Authors:'
-    @authors.each do |author|
-      puts "First Name: #{author.first_name} "
-      puts "Last Name: #{author.last_name} "
-    end
+    @author_controller.list
   end
 
   def list_all_games
-    puts 'Games:'
-    @games.each do |games|
-      puts "Multiplayer: #{games.multiplayer}, Publish Date: #{games.publish_date},
-      Last played date: #{games.last_played_at}"
-    end
+    @game_controller.list
   end
 
   def add_game
-    puts 'Please write multiplayer: '
-    multiplayer = input_bool
-    puts 'Please write last played date [Enter date in format (yyyy-mm-dd)]'
-    last_played_at = input_string
-    puts 'Please write date of publish [Enter date in format (yyyy-mm-dd)]'
-    publish_date = input_string
-    game = Game.new(multiplayer, last_played_at, publish_date)
-    @games.push(game)
+    data = Utils.data(['multiplayer [Y/N]', 'publish_date', 'last_played_at'])
+    p " add game data  #{data['publish_date']}"
+    author = @author_controller.authors[Utils.list_data(@author_controller) - 1]
+    @game_controller.add(data['multiplayer'], data['publish_date'], data['last_played_at'], author)
     puts 'Game added successfully!'
   end
 
@@ -129,6 +115,7 @@ class App
 
   def exit_app
     @music_controller.save
+    @game_controller.save
     exit(true)
   end
 
