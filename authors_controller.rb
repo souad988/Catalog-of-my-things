@@ -14,7 +14,7 @@ class AuthorController
       puts ' Author list is empty! choose the option to add an author from the list'
     else
       @authors.each_with_index do |author, index|
-        puts "index : #{index + 1} id: - #{author.first_name} #{author.last_name}"
+        puts "index: #{index + 1} FirstName: #{author.first_name} LastName: #{author.last_name}"
       end
     end
     @authors.length

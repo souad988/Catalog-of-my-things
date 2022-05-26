@@ -10,9 +10,9 @@ class GamesController
       puts ' Game list is empty! choose the option to add a game from the list'
     else
       @games.each_with_index do |game, index|
-        puts "Game #{index + 1} Multiplayer: #{game.multiplayer}
+        puts "Game: #{index + 1} Multiplayer #{game.multiplayer}
         Publish Date: #{game.publish_date}
-        Last Played: #{game.last_played_at}"
+        Last Played:  #{game.last_played_at}"
       end
       puts ''
     end
