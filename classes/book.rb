@@ -9,9 +9,7 @@ class Book < Item
   end
 
   def can_be_archived?
-    return true if @cover_state == 'bad'
-
-    super.can_be_archived?
+    @cover_state == 'bad' && super.can_be_archived?
   end
 
   def to_json(*args)
