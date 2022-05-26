@@ -2,10 +2,12 @@ require_relative '../classes/label'
 
 describe Label do
   context 'When testing the Label class' do
-    label = Label.new('label_title', 'label_color')
-    it 'label instance should return attributes it was created with' do
+    label = Label.new('label_title', 'blue')
+    it 'label title check' do
       expect(label.title).to eq 'label_title'
-      expect(label.color).to eq 'label_color'
+    end
+    it 'label color check' do
+      expect(label.color).to eq 'blue'
     end
   end
 end
