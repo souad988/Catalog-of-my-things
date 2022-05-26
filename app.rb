@@ -9,16 +9,23 @@ require_relative './utils'
 require_relative 'query'
 require_relative 'music_album'
 require_relative './controllers/genre_controller'
+require_relative './classes/book'
+require_relative './classes/label'
+require_relative './other_methods'
+
 class App
   include Inputs
   include GamesModule
   include AuthorsModule
+  include OtherMethods
 
   def initialize
     @games = load_games
     @authors = load_authors
     @music_controller = MusicAlbumController.new
     @genre_controller = GenreController.new
+    @books = read_data('books.json')
+    @labels = read_data('labels.json')
   end
 
   def list_all_authors
@@ -62,6 +69,35 @@ class App
 
   def list_genres
     @genre_controller.list
+  def list_all_labels
+    @labels.each { |label| puts "Title: #{label.title}, Color: #{label.color}" }
+  end
+
+  def list_all_books
+    @books.each { |book| p "Title: #{book.publisher}" }
+  end
+
+  def add_book
+    puts 'Enter Publish date'
+    publish_date = input_string
+    puts 'Enter Publisher'
+    publisher = input_string
+    puts 'Enter state of cover [bad/good]'
+    cover_state = input_string
+    book = Book.new(publish_date, publisher, cover_state, nil)
+
+    # add label / select a label
+    puts 'Enter label title'
+    label_title = input_string
+    puts 'Enter label color'
+    label_color = input_string
+    label = Label.new(label_title, label_color)
+
+    book.add_label(label)
+    @labels << label
+    @books << book
+    store_data('books.json', @books)
+    store_data('labels.json', @labels)
   end
 
   def display_menu
@@ -73,6 +109,10 @@ class App
       'List all genres',
       'List all labels',
       'List all authors',
+      'List of authors',
+      'List all genres',
+      'List all labels',
+      'List all games',
       'List all sources',
       'Add a book',
       'Add a music album',
@@ -94,10 +134,15 @@ class App
   def display_choice(option)
     methods = {}
     # Placeholder functions need to be replaced
-    # methods[1] = method(:list_all_authors)
-    # methods[2] = method(:list_all_games)
-    # methods[3] = method(:add_game)
+    methods[1] = method(:list_all_authors)
+    methods[2] = method(:list_all_games)
+    methods[3] = method(:add_game)
     # methods[4] = method(:add_new_book)
+    # methods[5] = method(:add_new_rental)
+    # methods[6] = method(:list_person_rentals)
+    methods[1] = method(:list_all_books)
+    methods[6] = method(:list_all_labels)
+    methods[9] = method(:add_book)
     methods[5] = method(:list_genres)
     methods[2] = method(:list_music_albums)
     methods[10] = method(:add_music_album)
@@ -114,6 +159,7 @@ class App
       option = input_number(min_option, max_option)
       flag = false if option == max_option
       display_choice(option) if option >= min_option && option <= max_option
+      flag = false if option == max_option
     end
   end
 end
