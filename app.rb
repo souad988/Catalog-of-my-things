@@ -72,11 +72,17 @@ class App
   end
 
   def list_all_labels
-    @labels.each { |label| puts "Title: #{label.title}, Color: #{label.color}" }
+    @labels.each_with_index { |label, index| puts "[#{index + 1}] - Title: #{label.title}, Color: #{label.color}" }
   end
 
   def list_all_books
-    @books.each { |book| p "Title: #{book.publisher}" }
+    @books.each { |book| puts "Publisher: #{book.publisher} Cover state: #{book.cover_state}" }
+  end
+
+  def select_label
+    puts 'Please select a label'
+    list_all_labels
+    input_number(1, @labels.length)
   end
 
   def add_book
@@ -89,11 +95,8 @@ class App
     book = Book.new(publish_date, publisher, cover_state, nil)
 
     # add label / select a label
-    puts 'Enter label title'
-    label_title = input_string
-    puts 'Enter label color'
-    label_color = input_string
-    label = Label.new(label_title, label_color)
+    choice = select_label
+    label = @labels[choice - 1]
 
     book.add_label(label)
     @labels << label

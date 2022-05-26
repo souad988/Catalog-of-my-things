@@ -1,7 +1,5 @@
 require_relative '../classes/book'
 
-require './label'
-
 describe Book do
   context 'When testing the Book class' do
     book = Book.new('2020/02/02', 'publisher', 'bad', nil)
