@@ -2,6 +2,7 @@ module Inputs
   def input_number(min, max)
     input = nil
     while input.nil?
+      puts "Enter number between #{min} and #{max} "
       new_input = gets.chomp.to_i
       input = new_input unless new_input < min || new_input > max
     end
