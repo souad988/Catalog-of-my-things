@@ -22,21 +22,28 @@ class App
   end
 
   def list_all_authors
+    puts 'Authors:'
     @authors.each do |author|
-      puts "#{author.first_name} #{author.last_name}"
+      puts "First Name: #{author.first_name} "
+      puts "Last Name: #{author.last_name} "
     end
   end
 
   def list_all_games
-    @games.each do |game|
-      puts "#{game.name} #{game.publish_date}"
+    puts 'Games:'
+    @games.each do |games|
+      puts "Multiplayer: #{games.multiplayer}, Publish Date: #{games.publish_date},
+      Last played date: #{games.last_played_at}"
     end
   end
 
   def add_game
-    multiplayer = input_bool
-    last_played_at = input_string
-    publish_date = input_string
+    puts 'Please write multiplayer: '
+    multiplayer = input_bool()
+    puts 'Please write last played date [Enter date in format (yyyy-mm-dd)]'
+    last_played_at = input_string()
+    puts 'Please write date of publish [Enter date in format (yyyy-mm-dd)]'
+    publish_date = input_string()
     game = Game.new(multiplayer, last_played_at, publish_date)
     @games.push(game)
     puts 'Game added successfully!'
