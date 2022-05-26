@@ -1,16 +1,20 @@
 require 'date'
-
 class Item
-  attr_accessor :publish_date, :archived, :id, :name
-  attr_reader :label, :author, :genre
+  attr_accessor :publish_date
+  attr_reader :source, :label, :author, :genre
 
-  def initialize(_id, name, publish_date, archived: false)
-    @name = name
-    @id = Random.rand(1..100)
+  # rubocop:disable Metrics/ParameterLists
+  def initialize(publish_date, id = nil, label = nil, author = nil, genre = nil, archived: false)
+    @id = id.nil? ? Random.rand(1..1000) : id
     @publish_date = Date.parse(publish_date)
     @archived = archived
+    @source = source
+    @label = label
+    @author = author
+    @genre = genre
   end
 
+  # rubocop:enable Metrics/ParameterLists
   def add_source(source)
     @source = source
   end
@@ -25,15 +29,19 @@ class Item
 
   def add_genre(genre)
     @genre = genre
+    genre.add_item(self)
   end
 
   def can_be_archived?
-    current_date = Date.today
-    time_diff = current_date.year - @publish_date.year
-    time_diff >= 10
+    Date.today.prev_year(10) > @publish_date
   end
 
   def move_to_archive()
     @archived = true if can_be_archived?
   end
+
+  private
+
+  attr_accessor :archived
+  attr_reader :id
 end
