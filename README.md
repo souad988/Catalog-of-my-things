@@ -64,12 +64,12 @@ rubocop --auto-correct-all | rubocop -A
 - GitHub: [@githubhandle](https://github.com/souad988)  
 - LinkedIn: [@linkedinbandle](https://www.linkedin.com/in/souad-el-mansouri/) 
 
+
 👤 **Jerry Owusu**
 
 - GitHub: [@jerryowusu](https://github.com/jerryowusu)
 - LinkedIn: [Jerry Owusu](https://www.linkedin.com/in/jerry-owusu/)
 
-## Author
 
 👤 **Salim Abdulai**
 
