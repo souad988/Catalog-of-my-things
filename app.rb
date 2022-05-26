@@ -66,7 +66,7 @@ class App
     publisher = input_string
     puts 'Enter state of cover [bad/good]'
     cover_state = input_string
-    book = Book.new(publish_date, publisher, cover_state, nil, nil, nil)
+    book = Book.new(publish_date, publisher, cover_state, nil)
 
     # # select author / add author
     # puts "Enter Author's First name"
