@@ -1,33 +1,33 @@
 require_relative '../music_album'
+require 'date'
 
-describe Book do
+describe MusicAlbum do
   before :each do
-    @book = Book.new 'test title', 'test author'
-    @json = '{"title":"test","author":"testet"}'
-    @generated_json = '{"title":"test title","author":"test author"}'
+    @musicAlbum = MusicAlbum.new '2021-05-20', 'true', 972
+    @json = "{\"id\":972,\"publish_date\":\"2021-05-20\",\"on_spotify\":true,\"genre\":null,\"archived\":false}"
   end
 
-  it 'should be a book instance' do
-    expect(@book).to be_instance_of Book
+  it 'should be a MusicAlbum instance ' do
+    expect(@musicAlbum).to be_instance_of MusicAlbum
   end
 
-  it 'book title shoud equal test title' do
-    expect(@book.title).to eql 'test title'
+  it 'music_album publish_date shoud equal 2021-05-20 ' do
+    expect(@musicAlbum.publish_date).to eql Date.parse('2021-05-20')
   end
 
-  it 'book author shoud equal test author' do
-    expect(@book.author).to eql 'test author'
+  it 'music_album on_spotify should be true' do
+    expect(@musicAlbum.on_spotify).to be_truthy
   end
 
-  it 'book rentals to be empty' do
-    expect(@book.rentals).to eql []
+  it 'music album genre to be nil' do
+    expect(@musicAlbum.genre).to be_nil
   end
 
-  it 'converts json to book object' do
-    expect(Book.from_json(@json)).to be_instance_of Book
+  it 'from_json converts properly json object to MusicAlbum instance' do
+    expect(MusicAlbum.from_json(@json)).to be_instance_of MusicAlbum
   end
 
-  it 'generates json object for title and author' do
-    expect(@book.to_json).to eql @generated_json
+  it 'to_json generates json object ' do
+    expect(@musicAlbum.to_json).to eql @json
   end
 end
