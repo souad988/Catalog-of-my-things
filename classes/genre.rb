@@ -9,7 +9,8 @@ class Genre
   end
 
   def add_item(item)
-    @items.push(item)
+    @items.push(item) unless @items.include?(item)
+    item.add_genre = self
   end
 
   def self.from_json(json)
